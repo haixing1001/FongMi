@@ -282,14 +282,17 @@ public class HomeActivity extends BaseActivity implements CustomTitleView.Listen
     }
 
     private void getHistory(boolean renew) {
-        List<History> items = History.get();
-        int historyIndex = getHistoryIndex();
-        int recommendIndex = getRecommendIndex();
-        boolean exist = recommendIndex - historyIndex == 2;
-        if (renew) mHistoryAdapter = new ArrayObjectAdapter(mPresenter = new HistoryPresenter(this));
-        if ((items.isEmpty() && exist) || (renew && exist)) mAdapter.removeItems(historyIndex, 1);
-        if ((!items.isEmpty() && !exist) || (renew && exist)) mAdapter.add(historyIndex, new ListRow(mHistoryAdapter));
-        mHistoryAdapter.setItems(items, new BaseDiffCallback<History>());
+// [修改] 将整个方法体内的显示逻辑注释掉
+    /*
+    List<History> items = History.get();
+    int historyIndex = getHistoryIndex();
+    int recommendIndex = getRecommendIndex();
+    boolean exist = recommendIndex - historyIndex == 2;
+    if (renew) mHistoryAdapter = new ArrayObjectAdapter(mPresenter = new HistoryPresenter(this));
+    if ((items.isEmpty() && exist) || (renew && exist)) mAdapter.removeItems(historyIndex, 1);
+    if ((!items.isEmpty() && !exist) || (renew && exist)) mAdapter.add(historyIndex, new ListRow(mHistoryAdapter));
+    mHistoryAdapter.setItems(items, new BaseDiffCallback<History>());
+    */
     }
 
     private void setHistoryDelete(boolean delete) {
@@ -327,11 +330,11 @@ public class HomeActivity extends BaseActivity implements CustomTitleView.Listen
                 getVideo();
                 break;
             case HISTORY:
-                getHistory();
+               // getHistory(); // [修改] 注释掉这一行
                 break;
             case SIZE:
                 getVideo();
-                getHistory(true);
+                // getHistory(true); // [修改] 注释掉这一行
                 break;
         }
     }
