@@ -179,7 +179,7 @@ public class HomeActivity extends BaseActivity implements CustomTitleView.Listen
     private void setAdapter() {
         mHistoryAdapter = new ArrayObjectAdapter(mPresenter = new HistoryPresenter(this));
         mAdapter.add(new ListRow(mFuncAdapter = new ArrayObjectAdapter(new FuncPresenter(this))));
-        mAdapter.add(R.string.home_history);
+        // mAdapter.add(R.string.home_history); // [修改] 注释掉或删除这一行，移除 "历史记录" 标题
         mAdapter.add(R.string.home_recommend);
     }
 
